@@ -6,9 +6,14 @@ import { AccessTokenStrategy } from './strategies/accessToken.strategy';
 import { RefreshTokenStrategy } from './strategies/refreshToken.strategy';
 import { UsersModule } from 'src/users/users.module';
 
-
 @Module({
-  imports: [JwtModule.register({}), UsersModule],
+  imports: [
+    JwtModule.register({
+      secret: "fsgsgsgsgdsf",
+      signOptions: { expiresIn: '60m' },
+    }),
+    UsersModule,
+  ],
   controllers: [AuthController],
   providers: [AuthService, AccessTokenStrategy, RefreshTokenStrategy],
 })
