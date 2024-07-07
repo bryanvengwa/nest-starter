@@ -6,6 +6,7 @@ import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { RouteLogger } from './common/middleware/logger.middleware';
 import { UsersController } from './users/users.controller';
+import configuration from './config/configuration';
 
 @Module({
   imports: [
@@ -15,7 +16,7 @@ import { UsersController } from './users/users.controller';
     ConfigModule.forRoot({
       envFilePath: ['.env.development', '.env.production'],
       isGlobal: true,
-      // load: [configuration],
+      load: [configuration],
     }),
     UsersModule,
     AuthModule,
